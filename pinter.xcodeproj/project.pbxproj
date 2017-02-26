@@ -16,6 +16,10 @@
 		BD7744671E625EDB00B294DB /* PinterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7744651E625EDB00B294DB /* PinterCollectionViewCell.xib */; };
 		BD77446A1E6262A300B294DB /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7744691E6262A300B294DB /* NSObjectExtension.swift */; };
 		BD77446C1E6262C400B294DB /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD77446B1E6262C400B294DB /* UICollectionViewExtension.swift */; };
+		BD77446E1E626C8600B294DB /* PinterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD77446D1E626C8600B294DB /* PinterCollectionViewLayout.swift */; };
+		BD7744701E626C9D00B294DB /* PinterCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD77446F1E626C9D00B294DB /* PinterCollectionViewLayoutAttributes.swift */; };
+		BD7744731E62800600B294DB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7744721E62800600B294DB /* Article.swift */; };
+		BD7744751E6281CA00B294DB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7744741E6281CA00B294DB /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		BD7744651E625EDB00B294DB /* PinterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinterCollectionViewCell.xib; sourceTree = "<group>"; };
 		BD7744691E6262A300B294DB /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		BD77446B1E6262C400B294DB /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		BD77446D1E626C8600B294DB /* PinterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterCollectionViewLayout.swift; sourceTree = "<group>"; };
+		BD77446F1E626C9D00B294DB /* PinterCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		BD7744721E62800600B294DB /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		BD7744741E6281CA00B294DB /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 		BD77444D1E625DAF00B294DB /* pinter */ = {
 			isa = PBXGroup;
 			children = (
+				BD7744711E627FE000B294DB /* Models */,
 				BD7744601E625E8F00B294DB /* ViewControllers */,
 				BD7744611E625E9900B294DB /* Views */,
 				BD7744681E62628600B294DB /* Extensions */,
@@ -87,6 +96,8 @@
 			children = (
 				BD7744641E625EDB00B294DB /* PinterCollectionViewCell.swift */,
 				BD7744651E625EDB00B294DB /* PinterCollectionViewCell.xib */,
+				BD77446D1E626C8600B294DB /* PinterCollectionViewLayout.swift */,
+				BD77446F1E626C9D00B294DB /* PinterCollectionViewLayoutAttributes.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,8 +107,17 @@
 			children = (
 				BD7744691E6262A300B294DB /* NSObjectExtension.swift */,
 				BD77446B1E6262C400B294DB /* UICollectionViewExtension.swift */,
+				BD7744741E6281CA00B294DB /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BD7744711E627FE000B294DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BD7744721E62800600B294DB /* Article.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +196,10 @@
 			files = (
 				BD7744631E625EB600B294DB /* PinterViewController.swift in Sources */,
 				BD7744661E625EDB00B294DB /* PinterCollectionViewCell.swift in Sources */,
+				BD7744701E626C9D00B294DB /* PinterCollectionViewLayoutAttributes.swift in Sources */,
+				BD77446E1E626C8600B294DB /* PinterCollectionViewLayout.swift in Sources */,
+				BD7744731E62800600B294DB /* Article.swift in Sources */,
+				BD7744751E6281CA00B294DB /* StringExtension.swift in Sources */,
 				BD77444F1E625DAF00B294DB /* AppDelegate.swift in Sources */,
 				BD77446A1E6262A300B294DB /* NSObjectExtension.swift in Sources */,
 				BD77446C1E6262C400B294DB /* UICollectionViewExtension.swift in Sources */,

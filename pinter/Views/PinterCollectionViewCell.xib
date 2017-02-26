@@ -11,28 +11,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PinterCollectionViewCell" id="gTV-IL-0wX" customClass="PinterCollectionViewCell" customModule="pinter" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="160" height="231"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="160" height="231"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijC-Ho-NVq">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="160" id="1B0-h9-c4F"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lLR-Jw-2qt">
+                        <rect key="frame" x="8" y="168" width="144" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="lLR-Jw-2qt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Qzq-VY-WH6"/>
+                <constraint firstItem="lLR-Jw-2qt" firstAttribute="top" secondItem="ijC-Ho-NVq" secondAttribute="bottom" constant="8" id="Rag-nf-1wj"/>
                 <constraint firstAttribute="trailing" secondItem="ijC-Ho-NVq" secondAttribute="trailing" id="Toq-9I-JQJ"/>
                 <constraint firstItem="ijC-Ho-NVq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dXA-lN-sie"/>
                 <constraint firstItem="ijC-Ho-NVq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fY8-0D-fVI"/>
-                <constraint firstAttribute="bottom" secondItem="ijC-Ho-NVq" secondAttribute="bottom" id="hkB-zG-Qk4"/>
+                <constraint firstAttribute="trailing" secondItem="lLR-Jw-2qt" secondAttribute="trailing" constant="8" id="oUZ-hk-MiX"/>
             </constraints>
-            <size key="customSize" width="160" height="160"/>
+            <size key="customSize" width="160" height="231"/>
             <connections>
+                <outlet property="imageHeightConst" destination="1B0-h9-c4F" id="qyT-LP-PbR"/>
                 <outlet property="imageView" destination="ijC-Ho-NVq" id="gpO-P2-0OQ"/>
+                <outlet property="titleLabel" destination="lLR-Jw-2qt" id="kbq-8E-nKw"/>
+                <outlet property="titleTopConst" destination="Rag-nf-1wj" id="8Db-9W-wBV"/>
             </connections>
-            <point key="canvasLocation" x="89" y="109"/>
+            <point key="canvasLocation" x="89" y="144.5"/>
         </collectionViewCell>
     </objects>
 </document>
