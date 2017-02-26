@@ -16,9 +16,22 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijC-Ho-NVq">
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                    </imageView>
+                </subviews>
             </view>
-            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ijC-Ho-NVq" secondAttribute="trailing" id="Toq-9I-JQJ"/>
+                <constraint firstItem="ijC-Ho-NVq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dXA-lN-sie"/>
+                <constraint firstItem="ijC-Ho-NVq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fY8-0D-fVI"/>
+                <constraint firstAttribute="bottom" secondItem="ijC-Ho-NVq" secondAttribute="bottom" id="hkB-zG-Qk4"/>
+            </constraints>
             <size key="customSize" width="160" height="160"/>
+            <connections>
+                <outlet property="imageView" destination="ijC-Ho-NVq" id="gpO-P2-0OQ"/>
+            </connections>
             <point key="canvasLocation" x="89" y="109"/>
         </collectionViewCell>
     </objects>

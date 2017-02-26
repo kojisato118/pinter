@@ -9,10 +9,14 @@
 import UIKit
 
 class PinterCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func set(image : UIImage?){
+        self.imageView.image = image
+    }
 }
