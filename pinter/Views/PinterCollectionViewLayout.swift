@@ -31,38 +31,7 @@ class PinterCollectionViewLayout: UICollectionViewLayout {
     
     override func prepare() {
         if cache.isEmpty {
-            let columnWidth = contentWidth / CGFloat(numberOfColumns)
-            var xOffset : [CGFloat] = []
-            for column in 0 ..< numberOfColumns {
-                xOffset.append(CGFloat(column) * columnWidth )
-            }
-            var column = 0
-            var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
-            
-            for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
-                
-                let indexPath = IndexPath(item: item, section: 0)
-                
-                let width = columnWidth - cellPadding * 2
-                let imageHeight = self.delegate?.collectionView(collectionView!, heightForPhotoAtIndexPath: indexPath,
-                                                                      withWidth:width)
-                let titleHeight = self.delegate?.collectionView(collectionView!,
-                                                                      heightForTitleAtIndexPath: indexPath, withWidth: width)
-                
-                let height = cellPadding +  imageHeight! + titleHeight! + cellPadding
-                let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
-                let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-                
-                let attributes = PinterCollectionViewLayoutAttributes(forCellWith: indexPath)
-                attributes.imageHeight = imageHeight!
-                attributes.frame = insetFrame
-                cache.append(attributes)
-                
-                contentHeight = max(contentHeight, frame.maxY)
-                yOffset[column] = yOffset[column] + height
-                
-                column = column >= (numberOfColumns - 1) ? 0 : column + 1
-            }
+            self.cache = self.createCache()
         }
     }
     
@@ -89,5 +58,68 @@ class PinterCollectionViewLayout: UICollectionViewLayout {
             return PinterCollectionViewLayoutAttributes.self
         }
     }
-
+    
+    func createCache() -> [PinterCollectionViewLayoutAttributes]{
+        var cache : [PinterCollectionViewLayoutAttributes] = []
+        
+        let columnWidth = contentWidth / CGFloat(numberOfColumns)
+        var xOffset : [CGFloat] = []
+        for column in 0 ..< numberOfColumns {
+            xOffset.append(CGFloat(column) * columnWidth )
+        }
+        var column = 0
+        var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
+        
+        for item in 0 ..< collectionView!.numberOfItems(inSection: 0) {
+            
+            let indexPath = IndexPath(item: item, section: 0)
+            
+            let width = columnWidth - cellPadding * 2
+            let imageHeight = self.delegate?.collectionView(collectionView!, heightForPhotoAtIndexPath: indexPath,
+                                                            withWidth:width)
+            let titleHeight = self.delegate?.collectionView(collectionView!,
+                                                            heightForTitleAtIndexPath: indexPath, withWidth: width)
+            
+            let height = cellPadding +  imageHeight! + titleHeight! + cellPadding
+            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            
+            let attributes = PinterCollectionViewLayoutAttributes(forCellWith: indexPath)
+            attributes.imageHeight = imageHeight!
+            attributes.frame = insetFrame
+            cache.append(attributes)
+            
+            contentHeight = max(contentHeight, frame.maxY)
+            yOffset[column] = yOffset[column] + height
+            
+            column = column >= (numberOfColumns - 1) ? 0 : column + 1
+        }
+        
+        return cache
+    }
+    
+    func clearCache(){
+        self.cache = []
+    }
+    
+    func updateCache(){
+        self.cache = self.createCache()
+    }
+    
+//    func updateCache(indexPath : IndexPath){
+//        let attributes = self.cache[indexPath.item]
+//        
+//        let columnWidth = contentWidth / CGFloat(numberOfColumns)
+//        let width = columnWidth - cellPadding * 2
+//        let imageHeight = self.delegate?.collectionView(collectionView!, heightForPhotoAtIndexPath: indexPath,
+//                                                        withWidth:width)
+//        
+//        let frame = attributes.frame
+//        let frameHeight = frame.height + imageHeight! - PinterCollectionViewCell.defaultImageHeight
+//        attributes.imageHeight = imageHeight!
+//        attributes.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: frameHeight)
+//        
+//        self.cache.remove(at: indexPath.item)
+//        self.cache.insert(attributes, at: indexPath.item)
+//    }
 }

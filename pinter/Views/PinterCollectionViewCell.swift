@@ -9,12 +9,15 @@
 import UIKit
 import AVFoundation
 
+
 class PinterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTopConst: NSLayoutConstraint!
+    
+    static let defaultImageHeight = CGFloat(100.0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,13 +35,37 @@ class PinterCollectionViewCell: UICollectionViewCell {
     
     
     func set(article : Article){
-        self.imageView.image = article.image
+//        self.imageView.image = article.image
+        self.imageView.sd_setImage(with: URL(string: article.imageUrl)) { (image, error, type, url) in
+            if article.image != image{
+                article.image = image
+                self.updateImageHeight()
+            }
+    
+        }
         self.titleLabel.text = article.title
     }
     
-    class func imageHeightWith(image : UIImage, width : CGFloat) -> CGFloat {
+    func updateImageHeight(){
+        DispatchQueue.global(qos: .default).async {
+            // imageのロードが早すぎるとcellがcollectionViewに乗る前に呼ばれちゃう
+            while self.collectionView == nil{}
+            DispatchQueue.main.async {
+                if let layout = self.collectionView?.collectionViewLayout as? PinterCollectionViewLayout{
+                    layout.updateCache()
+                    layout.invalidateLayout()
+                }
+            }
+        }
+    }
+    
+    class func imageHeightWith(image : UIImage?, width : CGFloat) -> CGFloat {
+        guard let img = image else {
+            return PinterCollectionViewCell.defaultImageHeight
+        }
+        
         let boundingRect =  CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        let rect  = AVMakeRect(aspectRatio: image.size, insideRect: boundingRect)
+        let rect  = AVMakeRect(aspectRatio: img.size, insideRect: boundingRect)
         return rect.size.height
     }
     

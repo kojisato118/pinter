@@ -10,11 +10,12 @@ import UIKit
 
 class Article: NSObject {
     let title : String
-    let image : UIImage
+    let imageUrl : String
+    var image : UIImage? = nil
     
-    init(title : String, image : UIImage) {
+    init(title : String, imageUrl : String) {
         self.title = title
-        self.image = image
+        self.imageUrl = imageUrl
         
         super.init()
     }

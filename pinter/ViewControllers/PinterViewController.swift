@@ -14,15 +14,24 @@ class PinterViewController: UIViewController{
     
     fileprivate var data : [Article] = []
 
+    let images = [
+        "http://1.bp.blogspot.com/-d--Gz9YriqI/WGnPW5YIevI/AAAAAAABA40/UsETonRUT2Qg37f-fY1jotEW7KzDpsBJACLcB/s800/happy_schoolgirl.png",
+        "http://3.bp.blogspot.com/-0PSkBmN0xoA/WIiB-0uYJzI/AAAAAAABBVs/YNDasC-1jVgbRpXjlyFybk24uB_Ts7F4gCLcB/s800/happy_schoolboy.png",
+        "https://3.bp.blogspot.com/-WWS2NopOSpw/WGYjNvOu3eI/AAAAAAABAxM/UD9wmIUflrgJuXS1bIphGpVPZaTVyEbxwCLcB/s400/hyuohen_computer_internet.png",
+        "http://2.bp.blogspot.com/-wO7nTrE8SjU/WGnPL3LBz_I/AAAAAAABA0k/Q_2XnnPguSMBsYAJrNLEuwR8YF_kjZHWgCLcB/s800/animal_buta_shock.png",
+        "http://2.bp.blogspot.com/-c1RPv5EPu3I/WGnPbqwVbcI/AAAAAAABA6s/677pzcImf3YMk6PpfCgNfTTiXygpNBhyACLcB/s800/smartphone_neru_man.png",
+        "http://1.bp.blogspot.com/-FSFqbqgA8wE/WD_ccIiEpFI/AAAAAAABAGI/p4wWCHN1B8o4TJzPFuwTowT0cFibxbMwACLcB/s800/writing_woman4_laugh.png",
+        "http://1.bp.blogspot.com/-CrxO29Ez5ds/WD_cS16kJVI/AAAAAAABACY/LoD1WGhwkgAUrbOOkUyTIS8-cHqHuDM3wCLcB/s800/kosoado2_sore.png"
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
         
         for _ in 0..<10{
-            let num = arc4random_uniform(3) + 1
-            let image = UIImage(named: "image\(num)")!
-            let charLen = arc4random_uniform(50) + 1
+            let num = Int(arc4random_uniform(UInt32(images.count)))
+            let imageUrl = images[num]
+            let charLen = arc4random_uniform(100) + 10
             let title = String.random(with : Int(charLen))
-            let article = Article(title: title, image: image)
+            let article = Article(title: title, imageUrl: imageUrl)
             
             self.data.append(article)
         }
